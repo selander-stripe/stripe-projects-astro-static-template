@@ -26,9 +26,8 @@ metadata:
     - Portfolio
     - Static site
 
-# TODO: point this at your public repo and pin a commit before submitting.
-repo: https://github.com/your-org/astro-portfolio-blog
-ref: REPLACE_WITH_PINNED_COMMIT_SHA
+repo: https://github.com/PostHog/stripe-projects-astro-static-template
+ref: a04ed0af920b484bcfa30588072a0c82e843c567
 
 services:
   - posthog/analytics
