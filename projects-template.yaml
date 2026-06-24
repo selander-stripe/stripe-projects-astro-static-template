@@ -1,9 +1,8 @@
-# Stripe Projects template manifest (in-repo copy).
+# Stripe Projects template manifest.
 #
-# This declares the services this template needs and the post-setup steps the
-# CLI surfaces after `stripe projects build`. The registry entry in
-# stripe/projects-template-registry mirrors this file and adds `repo` + a pinned
-# `ref`. See registry/static_site/astro-portfolio-blog.yaml.
+# Declares the services this template needs and the post-setup steps the CLI
+# surfaces after `stripe projects build`. To list it in the registry, mirror this
+# file into stripe/projects-template-registry at static_site/<variant>.yaml.
 
 guided:
   category: static_site
@@ -14,6 +13,8 @@ variant: cobalt-hedgehog
 default: true
 variant_description: PostHog • Algolia • Supabase • Netlify
 install_command: npm install
+repo: https://github.com/PostHog/stripe-projects-astro-static-template
+ref: fb97e1ddf3d290999b865c7aa9782f3901fd1032
 
 metadata:
   name: Astro Portfolio + Blog
