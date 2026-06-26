@@ -11,14 +11,14 @@ guided:
 template: posthog/astro-portfolio-blog
 variant: cobalt-hedgehog
 default: true
-variant_description: PostHog • Algolia • Supabase • Netlify
+variant_description: PostHog, Algolia, Supabase, Netlify
 install_command: npm install
-repo: https://github.com/PostHog/stripe-projects-astro-static-template
-ref: fb97e1ddf3d290999b865c7aa9782f3901fd1032
+repo: https://github.com/PostHog/stripe-projects-astro-static-template/tree/main/.
+ref: 4aab3c785c491e75f295b541f7fb9a97f6540529
 
 metadata:
   name: Astro Portfolio + Blog
-  description: Personal site with a landing page, portfolio, and blog — analytics, search, contact form, and hosting wired in.
+  description: Personal site with portfolio, blog, analytics, search, contact form, and hosting
   owner: posthog
   tags:
     - Astro
@@ -35,27 +35,41 @@ services:
 next_steps:
   - label: Run locally
     command: npm run dev
-  - label: Create the contact-form table
+  - label: Create contact form table
     command: supabase db execute --file supabase/schema.sql
-  - label: Index blog posts for search
+  - label: Index blog posts
     command: npm run index
-  - label: Deploy to Netlify
+  - label: Deploy
     command: npm run deploy
 
 tier_plans:
   posthog/analytics:
-    free_lowest_cost: PostHog/free
-    starter_paid: PostHog/pay-as-you-go
-    higher_scale: PostHog/pay-as-you-go
+    free_lowest_cost:
+      plan_service: PostHog/free
+      provider_configuration:
+        region: EU
+    starter_paid:
+      plan_service: PostHog/pay_as_you_go
+      provider_configuration:
+        region: EU
+    higher_scale:
+      plan_service: PostHog/pay_as_you_go
+      provider_configuration:
+        region: EU
   algolia/application:
-    free_lowest_cost: Algolia/build
-    starter_paid: Algolia/grow
-    higher_scale: Algolia/premium
+    free_lowest_cost:
+      plan: build
+      region: EU West
+      accept_terms: "By proceeding, you accept the Algolia Build Plan Terms: https://www.algolia.com/policies/build-plan-specific-terms and the product specific Service Limits available at https://www.algolia.com/doc/guides/scaling/algolia-service-limits."
+    starter_paid:
+      plan: grow
+      region: EU West
+      accept_terms: "By proceeding, you accept the Algolia Grow Plan Terms: https://www.algolia.com/policies/grow-plan-specific-terms and the product specific Service Limits available at https://www.algolia.com/doc/guides/scaling/algolia-service-limits."
+    higher_scale:
+      plan: grow-plus
+      region: EU West
+      accept_terms: "By proceeding, you accept the Algolia Grow Plus Plan Terms: https://www.algolia.com/policies/grow-plus-plan-specific-terms and the product specific Service Limits available at https://www.algolia.com/doc/guides/scaling/algolia-service-limits."
   supabase/project:
     free_lowest_cost: Supabase/free
     starter_paid: Supabase/pro
     higher_scale: Supabase/pro
-  netlify/project:
-    free_lowest_cost: Netlify/free
-    starter_paid: Netlify/pro
-    higher_scale: Netlify/pro

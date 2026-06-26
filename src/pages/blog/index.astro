@@ -12,11 +12,11 @@ const posts = (await getCollection('blog')).sort(
 );
 
 // Algolia credentials are provisioned by Stripe Projects and written to `.env`.
-// Only the search-only key is exposed to the client (the admin key stays in the
+// Only the search-only key is exposed to the client (the write key stays in the
 // indexing script). Search degrades gracefully to the static list when unset.
-const algoliaAppId = import.meta.env.ALGOLIA_APP_ID ?? '';
+const algoliaAppId = import.meta.env.ALGOLIA_APPLICATION_ID ?? '';
 const algoliaSearchKey = import.meta.env.ALGOLIA_SEARCH_API_KEY ?? '';
-const algoliaIndex = import.meta.env.ALGOLIA_INDEX_NAME ?? 'blog';
+const algoliaIndex = import.meta.env.ALGOLIA_APPLICATION_NAME ?? 'blog';
 const searchEnabled = Boolean(algoliaAppId && algoliaSearchKey);
 ---
 

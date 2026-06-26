@@ -4,7 +4,7 @@
 // (the npm script loads `.env` via `node --env-file-if-exists`)
 //
 // Credentials are provisioned by Stripe Projects (`stripe projects add
-// algolia/application`) and written to `.env`. The ADMIN key is used here for
+// algolia/application`) and written to `.env`. The write key is used here for
 // writing the index and must never be shipped to the browser — only the
 // search-only key is exposed on the client.
 
@@ -13,13 +13,13 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { algoliasearch } from 'algoliasearch';
 
-const appId = process.env.ALGOLIA_APP_ID;
-const adminKey = process.env.ALGOLIA_ADMIN_API_KEY;
-const indexName = process.env.ALGOLIA_INDEX_NAME ?? 'blog';
+const appId = process.env.ALGOLIA_APPLICATION_ID;
+const adminKey = process.env.ALGOLIA_WRITE_API_KEY;
+const indexName = process.env.ALGOLIA_APPLICATION_NAME ?? 'blog';
 
 if (!appId || !adminKey) {
 	console.log(
-		'[index-posts] ALGOLIA_APP_ID / ALGOLIA_ADMIN_API_KEY not set — skipping indexing.\n' +
+		'[index-posts] ALGOLIA_APPLICATION_ID / ALGOLIA_WRITE_API_KEY not set — skipping indexing.\n' +
 			'Provision Algolia with `stripe projects add algolia/application`, then run `npm run index`.',
 	);
 	process.exit(0);

@@ -3,7 +3,8 @@
 #
 # Two ways to deploy:
 #   1. Connect this repo in the Netlify UI — it reads this file automatically.
-#   2. Run `npm run deploy` locally — uses NETLIFY_AUTH_TOKEN + NETLIFY_SITE_ID
+#   2. Run `npm run deploy` locally — uses NETLIFY_NETLIFY_AUTH_TOKEN +
+#      NETLIFY_NETLIFY_SITE_ID
 #      from your .env (provisioned by Stripe Projects) to push the built `dist/`.
 
 [build]

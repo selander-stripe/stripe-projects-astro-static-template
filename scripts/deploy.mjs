@@ -2,13 +2,13 @@
 //
 // Run with:  npm run deploy
 // (the npm script loads `.env` via `node --env-file-if-exists` so the
-// Stripe-Projects-provisioned NETLIFY_AUTH_TOKEN / NETLIFY_SITE_ID are available)
+// Stripe-Projects-provisioned NETLIFY_NETLIFY_AUTH_TOKEN / NETLIFY_NETLIFY_SITE_ID are available)
 
 import { spawnSync } from 'node:child_process';
 
-if (!process.env.NETLIFY_AUTH_TOKEN || !process.env.NETLIFY_SITE_ID) {
+if (!process.env.NETLIFY_NETLIFY_AUTH_TOKEN || !process.env.NETLIFY_NETLIFY_SITE_ID) {
 	console.error(
-		'[deploy] NETLIFY_AUTH_TOKEN / NETLIFY_SITE_ID not set.\n' +
+		'[deploy] NETLIFY_NETLIFY_AUTH_TOKEN / NETLIFY_NETLIFY_SITE_ID not set.\n' +
 			'Provision Netlify with `stripe projects add netlify/project`, then retry.',
 	);
 	process.exit(1);
@@ -20,4 +20,13 @@ const run = (cmd, args) => {
 };
 
 run('npm', ['run', 'build']);
-run('npx', ['netlify', 'deploy', '--prod', '--dir=dist']);
+run('npx', [
+	'netlify',
+	'deploy',
+	'--prod',
+	'--dir=dist',
+	'--auth',
+	process.env.NETLIFY_NETLIFY_AUTH_TOKEN,
+	'--site',
+	process.env.NETLIFY_NETLIFY_SITE_ID,
+]);

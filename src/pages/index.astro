@@ -8,8 +8,8 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 // These are read at build time (server context) and the *public* anon key is
 // embedded for the client — it is safe to expose and is protected by Row Level
 // Security on the `messages` table (see supabase/schema.sql).
-const supabaseUrl = import.meta.env.SUPABASE_URL ?? '';
-const supabaseAnonKey = import.meta.env.SUPABASE_ANON_KEY ?? '';
+const supabaseUrl = import.meta.env.SUPABASE_PROJECT_URL ?? '';
+const supabaseAnonKey = import.meta.env.SUPABASE_PUBLISHABLE_KEY ?? '';
 const contactEnabled = Boolean(supabaseUrl && supabaseAnonKey);
 ---
 
@@ -71,7 +71,7 @@ const contactEnabled = Boolean(supabaseUrl && supabaseAnonKey);
 						<p class="notice">
 							The contact form is disabled because Supabase isn't configured yet.
 							Provision it with <code>stripe projects add supabase/project</code> and
-							set <code>SUPABASE_URL</code> / <code>SUPABASE_ANON_KEY</code> in your
+							set <code>SUPABASE_PROJECT_URL</code> / <code>SUPABASE_PUBLISHABLE_KEY</code> in your
 							<code>.env</code>.
 						</p>
 					)

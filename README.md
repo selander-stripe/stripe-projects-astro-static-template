@@ -35,26 +35,29 @@ Copy `.env.example` to `.env` and fill in the values for the services you want.
 The file lists every variable and notes which keys are safe to expose in the
 browser.
 
-Public keys (PostHog project key, Algolia search-only key, Supabase URL + anon
-key) are read at build time in `.astro` frontmatter and passed to the client.
-Secret keys (Algolia admin key, Supabase service-role key, Netlify token) are
-only ever used server-side.
+Public keys (`POSTHOG_ANALYTICS_API_KEY`, `ALGOLIA_SEARCH_API_KEY`,
+`SUPABASE_PROJECT_URL`, and `SUPABASE_PUBLISHABLE_KEY`) are read at build time
+in `.astro` frontmatter and passed to the client. Secret keys
+(`ALGOLIA_WRITE_API_KEY`, database URLs/passwords, and
+`NETLIFY_NETLIFY_AUTH_TOKEN`) are only ever used server-side.
 
 ### Per-service setup
 
-- **PostHog** — set `POSTHOG_API_KEY` (and optionally `POSTHOG_HOST`). Analytics
-  initialize on every page.
+- **PostHog** — provision `posthog/analytics`. The template reads
+  `POSTHOG_ANALYTICS_API_KEY` and `POSTHOG_ANALYTICS_HOST`. Analytics initialize
+  on every page.
 - **Supabase** — create the contact-form table once, then the form works:
   ```sh
   supabase db execute --file supabase/schema.sql
   ```
   (or paste `supabase/schema.sql` into the SQL editor). Row Level Security lets
   the anon key insert messages but not read them.
-- **Algolia** — index your posts (re-run whenever posts change):
+- **Algolia** — provision `algolia/application`, then index your posts (re-run
+  whenever posts change):
   ```sh
   npm run index
   ```
-- **Netlify** — deploy the site:
+- **Netlify** — provision `netlify/project`, then deploy the site:
   ```sh
   npm run deploy
   ```
