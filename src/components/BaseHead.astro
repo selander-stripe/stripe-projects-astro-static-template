@@ -21,7 +21,7 @@ const { title, description, image = FallbackImage } = Astro.props;
 // Read at build time and exposed to the client (the project API key is a public,
 // write-only key meant for browsers). Analytics no-ops when not configured.
 const posthogKey = import.meta.env.POSTHOG_ANALYTICS_API_KEY ?? '';
-const posthogHost = import.meta.env.POSTHOG_ANALYTICS_HOST ?? 'https://eu.posthog.com';
+const posthogHost = import.meta.env.POSTHOG_ANALYTICS_HOST ?? 'https://us.i.posthog.com';
 ---
 
 <!-- Global Metadata -->
@@ -74,7 +74,7 @@ const posthogHost = import.meta.env.POSTHOG_ANALYTICS_HOST ?? 'https://eu.postho
 				const key = document.querySelector<HTMLMetaElement>('meta[name="ph:key"]')?.content;
 				const apiHost =
 					document.querySelector<HTMLMetaElement>('meta[name="ph:host"]')?.content ??
-					'https://eu.posthog.com';
+					'https://us.i.posthog.com';
 
 				if (key) {
 					posthog.init(key, {
